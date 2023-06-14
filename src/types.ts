@@ -24,10 +24,13 @@ export interface ActiveDirectoryComputer {
   dn: string;
   cn: string;
   objectGUID: string;
+  objectCategory: string;
   name: string;
   instanceType: string;
   operatingSystem: string;
   operatingSystemVersion: string;
+  isCriticalSystemObject: string;
+  lastLogonTimestamp: string;
   whenCreated: string;
   whenChanged: string;
 }

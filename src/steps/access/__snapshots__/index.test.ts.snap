@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`build-user-group-relationships 1`] = `
+Object {
+  "_class": "HAS",
+  "_fromEntityKey": "ad_group:CN=Group Policy Creator Owners,CN=Users,DC=activedirint,DC=com",
+  "_key": "ad_group:CN=Group Policy Creator Owners,CN=Users,DC=activedirint,DC=com|has|ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
+  "_toEntityKey": "ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
+  "_type": "ad_group_has_user",
+  "displayName": "HAS",
+}
+`;
+
+exports[`fetch-devices 1`] = `
+Object {
+  "_class": Array [
+    "Device",
+  ],
+  "_key": "ad_device:CN=ActiveDirectory,OU=Domain Controllers,DC=activedirint,DC=com",
+  "_type": "ad_device",
+  "category": "computer",
+  "createdOn": 1647041559000,
+  "deviceId": "CN=ActiveDirectory,OU=Domain Controllers,DC=activedirint,DC=com",
+  "displayName": "ActiveDirectory",
+  "isCriticalSystemObject": true,
+  "lastLogon": undefined,
+  "lastSeenOn": 1577836800000,
+  "make": null,
+  "model": null,
+  "name": "ActiveDirectory",
+  "operatingSystem": "Windows Server 2019 Datacenter",
+  "operatingSystemVersion": "10.0 (17763)",
+  "serial": null,
+  "updatedOn": 1649751405000,
+}
+`;
+
+exports[`fetch-groups 1`] = `
+Object {
+  "_class": Array [
+    "UserGroup",
+  ],
+  "_key": "ad_group:CN=Administrators,CN=Builtin,DC=activedirint,DC=com",
+  "_type": "ad_group",
+  "createdOn": 1647041514000,
+  "description": "Administrators have complete and unrestricted access to the computer/domain",
+  "displayName": "Administrators",
+  "name": "Administrators",
+  "updatedOn": 1647042471000,
+}
+`;
+
+exports[`fetch-users 1`] = `
+Object {
+  "_class": Array [
+    "User",
+  ],
+  "_key": "ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
+  "_type": "ad_user",
+  "active": true,
+  "createdOn": 1647041514000,
+  "description": "Built-in account for administering the computer/domain",
+  "displayName": "activedir",
+  "name": "activedir",
+  "updatedOn": 1650392064000,
+  "username": "activedir",
+}
+`;
