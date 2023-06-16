@@ -4,6 +4,7 @@ import {
   Entity,
   RelationshipClass,
   Relationship,
+  parseTimePropertyValue,
 } from '@jupiterone/integration-sdk-core';
 
 import { Entities } from '../constants';
@@ -59,6 +60,11 @@ export function createGroupEntity(group: ActiveDirectoryGroup): Entity {
 
 export function createDeviceEntity(computer: ActiveDirectoryComputer): Entity {
   const id = `ad_device:${computer.dn}`;
+  const lastLogon =
+    isNaN(Number(computer.lastLogonTimestamp)) ||
+    Number(computer.lastLogonTimestamp) == 0
+      ? undefined
+      : parseTimePropertyValue(Number(computer.lastLogonTimestamp), 'ms');
 
   return createIntegrationEntity({
     entityData: {
@@ -67,15 +73,19 @@ export function createDeviceEntity(computer: ActiveDirectoryComputer): Entity {
         _type: Entities.DEVICE._type,
         _class: Entities.DEVICE._class,
         _key: id,
+        name: computer.name,
         deviceId: computer.dn,
-        category: computer.instanceType,
-        make: 'N/A',
-        model: 'N/A',
-        serial: 'N/A',
+        category: 'computer', // client.iterateDevices is specifically filtering on "COMPUTER"
+        make: null,
+        model: null,
+        serial: null,
         operatingSystem: computer.operatingSystem,
         operatingSystemVersion: computer.operatingSystemVersion,
+        isCriticalSystemObject: computer.isCriticalSystemObject == 'TRUE',
+        lastLogon,
         createdOn: parseLdapDatetime(computer.whenCreated),
         updatedOn: parseLdapDatetime(computer.whenChanged),
+        lastSeenOn: parseTimePropertyValue(new Date()), // Because we are doing the scanning ourselves with iterateDevices, the current time is the lastSeenOn value.
       },
     },
   });

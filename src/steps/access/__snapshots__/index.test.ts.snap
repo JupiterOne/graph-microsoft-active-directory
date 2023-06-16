@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`build-user-group-relationships 1`] = `
+Object {
+  "_class": "HAS",
+  "_fromEntityKey": "ad_group:CN=Group Policy Creator Owners,CN=Users,DC=activedirint,DC=com",
+  "_key": "ad_group:CN=Group Policy Creator Owners,CN=Users,DC=activedirint,DC=com|has|ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
+  "_toEntityKey": "ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
+  "_type": "ad_group_has_user",
+  "displayName": "HAS",
+}
+`;
+
+exports[`fetch-devices 1`] = `
+Object {
+  "_class": Array [
+    "Device",
+  ],
+  "_key": "ad_device:CN=ActiveDirectory,OU=Domain Controllers,DC=activedirint,DC=com",
+  "_type": "ad_device",
+  "category": "computer",
+  "createdOn": Any<Number>,
+  "deviceId": "CN=ActiveDirectory,OU=Domain Controllers,DC=activedirint,DC=com",
+  "displayName": "ActiveDirectory",
+  "isCriticalSystemObject": true,
+  "lastLogon": undefined,
+  "lastSeenOn": Any<Number>,
+  "make": null,
+  "model": null,
+  "name": "ActiveDirectory",
+  "operatingSystem": "Windows Server 2019 Datacenter",
+  "operatingSystemVersion": "10.0 (17763)",
+  "serial": null,
+  "updatedOn": Any<Number>,
+}
+`;
+
+exports[`fetch-groups 1`] = `
+Object {
+  "_class": Array [
+    "UserGroup",
+  ],
+  "_key": "ad_group:CN=Administrators,CN=Builtin,DC=activedirint,DC=com",
+  "_type": "ad_group",
+  "createdOn": Any<Number>,
+  "description": "Administrators have complete and unrestricted access to the computer/domain",
+  "displayName": "Administrators",
+  "name": "Administrators",
+  "updatedOn": Any<Number>,
+}
+`;
+
+exports[`fetch-users 1`] = `
+Object {
+  "_class": Array [
+    "User",
+  ],
+  "_key": "ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
+  "_type": "ad_user",
+  "active": true,
+  "createdOn": Any<Number>,
+  "description": "Built-in account for administering the computer/domain",
+  "displayName": "activedir",
+  "name": "activedir",
+  "updatedOn": Any<Number>,
+  "username": "activedir",
+}
+`;
