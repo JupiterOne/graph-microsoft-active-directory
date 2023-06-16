@@ -19,7 +19,7 @@ Object {
   "_key": "ad_device:CN=ActiveDirectory,OU=Domain Controllers,DC=activedirint,DC=com",
   "_type": "ad_device",
   "category": "computer",
-  "createdOn": 1647041559000,
+  "createdOn": Any<Number>,
   "deviceId": "CN=ActiveDirectory,OU=Domain Controllers,DC=activedirint,DC=com",
   "displayName": "ActiveDirectory",
   "isCriticalSystemObject": true,
@@ -31,7 +31,7 @@ Object {
   "operatingSystem": "Windows Server 2019 Datacenter",
   "operatingSystemVersion": "10.0 (17763)",
   "serial": null,
-  "updatedOn": 1649751405000,
+  "updatedOn": Any<Number>,
 }
 `;
 
@@ -42,11 +42,11 @@ Object {
   ],
   "_key": "ad_group:CN=Administrators,CN=Builtin,DC=activedirint,DC=com",
   "_type": "ad_group",
-  "createdOn": 1647041514000,
+  "createdOn": Any<Number>,
   "description": "Administrators have complete and unrestricted access to the computer/domain",
   "displayName": "Administrators",
   "name": "Administrators",
-  "updatedOn": 1647042471000,
+  "updatedOn": Any<Number>,
 }
 `;
 
@@ -58,11 +58,11 @@ Object {
   "_key": "ad_user:CN=activedir,CN=Users,DC=activedirint,DC=com",
   "_type": "ad_user",
   "active": true,
-  "createdOn": 1647041514000,
+  "createdOn": Any<Number>,
   "description": "Built-in account for administering the computer/domain",
   "displayName": "activedir",
   "name": "activedir",
-  "updatedOn": 1650392064000,
+  "updatedOn": Any<Number>,
   "username": "activedir",
 }
 `;

@@ -10,14 +10,20 @@ test('fetch-users', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.USERS);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
-  expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot();
+  expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot({
+    createdOn: expect.any(Number),
+    updatedOn: expect.any(Number),
+  });
 });
 
 test('fetch-groups', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.GROUPS);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
-  expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot();
+  expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot({
+    createdOn: expect.any(Number),
+    updatedOn: expect.any(Number),
+  });
 });
 
 test('build-user-group-relationships', async () => {
@@ -33,5 +39,7 @@ test('fetch-devices', async () => {
   expect(stepResult).toMatchStepMetadata(stepConfig);
   expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot({
     lastSeenOn: expect.any(Number),
+    createdOn: expect.any(Number),
+    updatedOn: expect.any(Number),
   });
 });
