@@ -31,5 +31,7 @@ test('fetch-devices', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.DEVICES);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
-  expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot();
+  expect(omit(stepResult.collectedEntities[0], ['_rawData'])).toMatchSnapshot({
+    lastSeenOn: expect.any(Number),
+  });
 });
