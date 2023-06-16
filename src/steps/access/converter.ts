@@ -85,7 +85,7 @@ export function createDeviceEntity(computer: ActiveDirectoryComputer): Entity {
         lastLogon,
         createdOn: parseLdapDatetime(computer.whenCreated),
         updatedOn: parseLdapDatetime(computer.whenChanged),
-        lastSeenOn: parseTimePropertyValue(new Date()), // Because we are doing the scanning ourselves with iterateDevices, the current time is the lassSeenOn value.
+        lastSeenOn: parseTimePropertyValue(new Date()), // Because we are doing the scanning ourselves with iterateDevices, the current time is the lastSeenOn value.
       },
     },
   });
