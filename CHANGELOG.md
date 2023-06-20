@@ -8,6 +8,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+## 3.1.1 - 2022-12-21
+
+### Added
+
+- `lastSeenOn`, `name`, `serial`, `isCriticalSystemObject`, and `lastLogon` to
+  Device entities.
+
+### Changed
+
+- `make`, `model`, and `serialNumber` from "N/A" to null on Device entities.
+
 ## 3.1.0 - 2022-12-21
 
 ### Changed
