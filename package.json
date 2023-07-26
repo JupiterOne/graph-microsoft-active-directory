@@ -5,6 +5,9 @@
   "license": "MPL-2.0",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "engines": {
+    "node": ">=18.0.0 <19.x"
+  },
   "files": [
     "src",
     "jupiterone"
@@ -28,19 +31,37 @@
     "test:ci": "yarn format:check && yarn lint && yarn type-check && yarn test",
     "build": "tsc -p tsconfig.dist.json --declaration && cp README.md dist/README.md && cp -r jupiterone/ dist/jupiterone/",
     "prepush": "yarn format:check && yarn lint && yarn type-check && jest --changedSince main",
-    "test:connection": "ts-node ./testConnection.ts"
+    "test:connection": "ts-node ./testConnection.ts",
+    "postversion": "cp package.json ./dist/package.json"
   },
   "peerDependencies": {
-    "@jupiterone/integration-sdk-core": "^8.25.1"
+    "@jupiterone/integration-sdk-core": "^9.9.2"
   },
   "devDependencies": {
-    "@jupiterone/integration-sdk-core": "^8.25.1",
-    "@jupiterone/integration-sdk-dev-tools": "^8.25.1",
-    "@jupiterone/integration-sdk-testing": "^8.25.1",
+    "@jupiterone/integration-sdk-core": "^9.9.2",
+    "@jupiterone/integration-sdk-dev-tools": "^9.9.2",
+    "@jupiterone/integration-sdk-testing": "^9.9.2",
     "ldap-authentication": "^2.3.2",
-    "ldapjs": "^2.3.3"
+    "ldapjs": "^2.3.3",
+    "auto": "^10.36.5"
   },
   "dependencies": {
     "ldapts": "^4.2.0"
+  },
+  "auto": {
+    "plugins": [
+      [
+        "npm",
+        {
+          "setRcToken": false,
+          "publishFolder": "./dist"
+        }
+      ],
+      "released"
+    ],
+    "onlyPublishWithReleaseLabel": true,
+    "shipit": {
+      "prerelease": false
+    }
   }
 }
