@@ -3,6 +3,7 @@ export interface ActiveDirectoryUser {
   cn: string;
   objectGUID: string;
   name: string;
+  mail: string;
   memberOf?: string | string[];
   description: string;
   whenCreated: string;

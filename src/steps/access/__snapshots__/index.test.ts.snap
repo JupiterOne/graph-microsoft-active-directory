@@ -61,6 +61,7 @@ Object {
   "createdOn": Any<Number>,
   "description": "Built-in account for administering the computer/domain",
   "displayName": "activedir",
+  "email": undefined,
   "name": "activedir",
   "updatedOn": Any<Number>,
   "username": "activedir",
