@@ -1,3 +1,15 @@
+# v3.2.1 (Fri Aug 04 2023)
+
+#### 🐛 Bug Fix
+
+- Adding in email address for AD users if present. [#32](https://github.com/JupiterOne/graph-microsoft-active-directory/pull/32) ([@adam-in-ict](https://github.com/adam-in-ict))
+
+#### Authors: 1
+
+- Adam Pierson ([@adam-in-ict](https://github.com/adam-in-ict))
+
+---
+
 # v3.2.0 (Wed Jul 26 2023)
 
 #### 🚀 Enhancement
