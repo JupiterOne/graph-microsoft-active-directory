@@ -32,6 +32,7 @@ export function createUserEntity(user: ActiveDirectoryUser): Entity {
         username: user.name,
         active: true,
         description: user.description,
+        email: user.mail,
         createdOn: parseLdapDatetime(user.whenCreated),
         updatedOn: parseLdapDatetime(user.whenChanged),
       },
