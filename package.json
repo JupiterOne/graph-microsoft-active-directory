@@ -2,6 +2,10 @@
   "name": "@jupiterone/graph-microsoft-active-directory",
   "version": "3.2.1",
   "description": "A JupiterOne Integration for ingesting data of the Microsoft Active Directory",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JupiterOne/graph-microsoft-active-directory"
+  },
   "license": "MPL-2.0",
   "main": "src/index.js",
   "types": "src/index.d.ts",

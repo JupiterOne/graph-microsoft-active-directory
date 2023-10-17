@@ -1,0 +1,14 @@
+openapi: 3.0.1
+info:
+  title: '@jupiterone/graph-microsoft-active-directory'
+  description: >-
+    A JupiterOne Integration for ingesting data of the Microsoft Active
+    Directory
+  x-cortex-git:
+    github:
+      repository: JupiterOne/graph-microsoft-active-directory
+  x-cortex-owners:
+    - type: group
+      name: JupiterOne/integrations
+  x-cortex-service-groups: tier-4
+  x-cortex-tag: '@jupiterone/graph-microsoft-active-directory'
