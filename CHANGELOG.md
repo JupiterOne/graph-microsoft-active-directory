@@ -1,3 +1,20 @@
+# v3.2.2 (Thu Nov 09 2023)
+
+#### 🐛 Bug Fix
+
+- [NOTICKET] Adding testdata as it's needed when calling the client [#33](https://github.com/JupiterOne/graph-microsoft-active-directory/pull/33) ([@ImDevinC](https://github.com/ImDevinC))
+
+#### ⚠️ Pushed to `main`
+
+- Populate CODEOWENRS, baseline package.json and baseline cortex.yaml ([@jablonnc](https://github.com/jablonnc))
+
+#### Authors: 2
+
+- Devin Collins ([@ImDevinC](https://github.com/ImDevinC))
+- Noah Jablonski ([@jablonnc](https://github.com/jablonnc))
+
+---
+
 # v3.2.1 (Fri Aug 04 2023)
 
 #### 🐛 Bug Fix
