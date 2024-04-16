@@ -1,6 +1,6 @@
 {
   "name": "@jupiterone/graph-microsoft-active-directory",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "description": "A JupiterOne Integration for ingesting data of the Microsoft Active Directory",
   "repository": {
     "type": "git",
