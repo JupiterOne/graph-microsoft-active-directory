@@ -11,4 +11,5 @@ export const invocationConfig: IntegrationInvocationConfig<IntegrationConfig> =
     instanceConfigFields,
     validateInvocation,
     integrationSteps,
+    stepConcurrency: 1,
   };
