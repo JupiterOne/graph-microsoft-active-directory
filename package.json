@@ -39,12 +39,12 @@
     "postversion": "cp package.json ./dist/package.json"
   },
   "peerDependencies": {
-    "@jupiterone/integration-sdk-core": "^9.9.2"
+    "@jupiterone/integration-sdk-core": "^12.4.1"
   },
   "devDependencies": {
-    "@jupiterone/integration-sdk-core": "^9.9.2",
-    "@jupiterone/integration-sdk-dev-tools": "^9.9.2",
-    "@jupiterone/integration-sdk-testing": "^9.9.2",
+    "@jupiterone/integration-sdk-core": "^12.4.1",
+    "@jupiterone/integration-sdk-dev-tools": "^12.4.1",
+    "@jupiterone/integration-sdk-testing": "^12.4.1",
     "ldap-authentication": "^2.3.2",
     "ldapjs": "^2.3.3",
     "auto": "^10.36.5"

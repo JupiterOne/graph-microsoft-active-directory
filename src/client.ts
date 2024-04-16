@@ -49,9 +49,8 @@ export class APIClient {
   public async iterateGroups(
     iteratee: ResourceIteratee<ActiveDirectoryGroup>,
   ): Promise<void> {
-    const groups: ActiveDirectoryGroup[] = await this.client.search(
-      'objectClass=Group',
-    );
+    const groups: ActiveDirectoryGroup[] =
+      await this.client.search('objectClass=Group');
 
     for (const group of groups) {
       await iteratee(group);
