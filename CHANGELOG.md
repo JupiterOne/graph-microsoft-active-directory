@@ -1,3 +1,22 @@
+# v3.3.0 (Tue Apr 16 2024)
+
+#### 🚀 Enhancement
+
+- Set step concurrency to 1 [#34](https://github.com/JupiterOne/graph-microsoft-active-directory/pull/34) ([@zemberdotnet](https://github.com/zemberdotnet))
+
+#### ⚠️ Pushed to `main`
+
+- Apply remove-codeql with multi-gitter [ci skip] ([@electricgull](https://github.com/electricgull))
+- Fix x-cortex-service-groups where tier-4 was set incorrectly ([@jablonnc](https://github.com/jablonnc))
+
+#### Authors: 3
+
+- Cameron Griffin ([@electricgull](https://github.com/electricgull))
+- Matthew Zember ([@zemberdotnet](https://github.com/zemberdotnet))
+- Noah Jablonski ([@jablonnc](https://github.com/jablonnc))
+
+---
+
 # v3.2.2 (Thu Nov 09 2023)
 
 #### 🐛 Bug Fix
