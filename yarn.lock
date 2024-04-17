@@ -1591,6 +1591,18 @@
     deepmerge "^4.2.2"
     lodash "^4.17.15"
 
+"@jupiterone/ldapts@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@jupiterone/ldapts/-/ldapts-8.0.0.tgz#a83f3f36838da87418a494a3ab9f1c0c010c5a19"
+  integrity sha512-up+epPkXhfxHanEA9HxJJy4zbNfGqnFv6xI/mTqdeXtCMVdpAtSU+OOErISRvxN9kETxtGp/VFHXX7Y1NvEDyg==
+  dependencies:
+    "@types/asn1" ">=0.2.4"
+    "@types/uuid" ">=9"
+    asn1 "~0.2.6"
+    debug "~4.3.4"
+    strict-event-emitter-types "~2.0.0"
+    uuid "~9.0.1"
+
 "@lifeomic/alpha@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@lifeomic/alpha/-/alpha-5.2.0.tgz#aa420217a74b798509506dc671ea44587a553a84"
@@ -2392,10 +2404,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.4.tgz#0b92dcc0cc1c81f6f306a381f28e31b1a56536e9"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
-"@types/asn1@>=0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@types/asn1/-/asn1-0.2.0.tgz#23b568688b321740bd4eafef49e6b13ffc101b31"
-  integrity sha512-5TMxIpYbIA9c1J0hYQjQDX3wr+rTgQEAXaW2BI8ECM8FO53wSW4HFZplTalrKSHuZUc76NtXcePRhwuOHqGD5g==
+"@types/asn1@>=0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@types/asn1/-/asn1-0.2.4.tgz#a0f89f9ddad8186c9c081c5df2e5cade855d2ac0"
+  integrity sha512-V91DSJ2l0h0gRhVP4oBfBzRBN9lAbPUkGDMCnwedqPKX2d84aAMc9CulOvxdw1f7DfEYx99afab+Rsm3e52jhA==
   dependencies:
     "@types/node" "*"
 
@@ -2512,11 +2524,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.7.tgz#36820945061326978c42a01e56b61cd223dfdc42"
   integrity sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==
 
-"@types/node@>=14":
-  version "18.8.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.3.tgz#ce750ab4017effa51aed6a7230651778d54e327c"
-  integrity sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==
-
 "@types/node@^18":
   version "18.19.31"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.31.tgz#b7d4a00f7cb826b60a543cebdbda5d189aaecdcd"
@@ -2553,10 +2560,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/uuid@>=8":
-  version "8.3.4"
-  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.4.tgz#bd86a43617df0594787d38b735f55c805becf1bc"
-  integrity sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==
+"@types/uuid@>=9":
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-9.0.8.tgz#7545ba4fc3c003d6c756f651f3bf163d8f0f29ba"
+  integrity sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==
 
 "@types/yargs-parser@*":
   version "20.2.1"
@@ -5634,19 +5641,6 @@ ldapjs@^2.3.3:
     vasync "^2.2.0"
     verror "^1.8.1"
 
-ldapts@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/ldapts/-/ldapts-4.2.0.tgz#6d7cda841de9595b9ce8772ed2e4fc5587657f27"
-  integrity sha512-ePskiDgeMYs22XeXisXd+lXNvNTH4TKkhmeQd3hQs0od2/KiXTAPup2l1yPmOOXLBbZsab5G5L+YpvSXF0V8/w==
-  dependencies:
-    "@types/asn1" ">=0.2.0"
-    "@types/node" ">=14"
-    "@types/uuid" ">=8"
-    asn1 "~0.2.6"
-    debug "~4.3.4"
-    strict-event-emitter-types "~2.0.0"
-    uuid "~9.0.0"
-
 leven@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
@@ -7709,10 +7703,10 @@ uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-uuid@~9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
-  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
+uuid@~9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"

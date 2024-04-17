@@ -1,4 +1,4 @@
-import * as ldapts from 'ldapts';
+import * as ldapts from '@jupiterone/ldapts';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import { authenticate } from 'ldap-authentication';

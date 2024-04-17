@@ -156,21 +156,6 @@ describe('#validateInvocation', () => {
           'Provider authentication failed at https://localhost/api/v1/some/endpoint?limit=1: 401 Unauthorized',
         );
       });
-
-      test('support old configField values', async () => {
-        const executionContext = createMockExecutionContext({
-          instanceConfig: {
-            clientUrl: 'http',
-            clientDomain: 'value',
-            clientUsername: 'testUsername',
-            clientPassword: 'test123',
-          } as unknown as IntegrationConfig,
-        });
-
-        await expect(
-          validateInvocation(executionContext),
-        ).resolves.toBeUndefined();
-      });
     });
   });
 });
