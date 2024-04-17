@@ -106,9 +106,9 @@ export class LdapTSAdapter implements LdapClient {
         }
 
         const pageResults = nextPageResults(res);
+        nextPage = pageResults.nextPage;
 
         if (pageResults.nextPage) {
-          nextPage = false;
           pageControl = new ldapts.PagedResultsControl({
             value: {
               size: pageSize,
