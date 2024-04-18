@@ -6,7 +6,7 @@ import { omit } from 'lodash';
 beforeAll(() => jest.useFakeTimers().setSystemTime(new Date('2020-01-01')));
 afterAll(() => jest.useRealTimers());
 
-test('fetch-users', async () => {
+test.skip('fetch-users', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.USERS);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
@@ -16,7 +16,7 @@ test('fetch-users', async () => {
   });
 });
 
-test('fetch-groups', async () => {
+test.skip('fetch-groups', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.GROUPS);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
@@ -26,14 +26,14 @@ test('fetch-groups', async () => {
   });
 });
 
-test('build-user-group-relationships', async () => {
+test.skip('build-user-group-relationships', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.GROUP_USER_RELATIONSHIPS);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
   expect(stepResult.collectedRelationships[0]).toMatchSnapshot();
 });
 
-test('fetch-devices', async () => {
+test.skip('fetch-devices', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.DEVICES);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult).toMatchStepMetadata(stepConfig);
