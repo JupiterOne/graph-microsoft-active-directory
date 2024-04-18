@@ -3,7 +3,8 @@ import {
   IntegrationProviderAPIError,
   IntegrationProviderAuthenticationError,
 } from '@jupiterone/integration-sdk-core';
-import * as ldapts from 'ldapts';
+import * as ldapts from '@jupiterone/ldapts';
+import { ResourceIteratee } from './client';
 
 const DEFAULT_PAGE_SIZE = 100;
 export interface LdapClient {
@@ -13,7 +14,7 @@ export interface LdapClient {
    * @param filter the active directory search term to use to search for resources, e.g. objectClass=Computer
    * @returns all matching resources
    */
-  search<T>(filter: string): Promise<T[]>;
+  search<T>(filter: string, iteratee: ResourceIteratee<T>): Promise<void>;
 
   /**
    * Verifies authentication by doing a bind action.
@@ -30,6 +31,28 @@ interface LdapAdapterConfig {
   pageSize?: string;
 }
 
+type NextPageResults =
+  | {
+      nextPage: true;
+      cookie: Buffer;
+    }
+  | { nextPage: false; cookie: undefined };
+
+function nextPageResults(
+  response: Awaited<ReturnType<ldapts.Client['search']>>,
+): NextPageResults {
+  if (response.searchEntries.length) {
+    const returnedPageControl = response.controls
+      ?.filter((ctrl) => ctrl instanceof ldapts.PagedResultsControl)
+      .at(0) as ldapts.PagedResultsControl | undefined;
+    const cookie = returnedPageControl?.value?.cookie;
+    if (cookie?.length) {
+      return { nextPage: true, cookie };
+    }
+  }
+  return { nextPage: false, cookie: undefined };
+}
+
 export class LdapTSAdapter implements LdapClient {
   private client: ldapts.Client;
   private config: LdapAdapterConfig;
@@ -41,7 +64,13 @@ export class LdapTSAdapter implements LdapClient {
     });
   }
 
-  async search<T>(filter: string): Promise<T[]> {
+  async search<T>(
+    filter: string,
+    iteratee: ResourceIteratee<T>,
+  ): Promise<void> {
+    const pageSize = this.config.pageSize
+      ? Number(this.config.pageSize)
+      : DEFAULT_PAGE_SIZE;
     try {
       await this.client.bind(this.config.username, this.config.password);
 
@@ -55,18 +84,39 @@ export class LdapTSAdapter implements LdapClient {
 
       // Issue added to ldapts project asking about a method for processing
       // pages as they're received here:  https://github.com/ldapts/ldapts/issues/126
-
-      const res = await this.client.search(this.config.baseDN, {
-        filter,
-        derefAliases: 'always',
-        paged: {
-          pageSize: this.config.pageSize
-            ? Number(this.config.pageSize)
-            : DEFAULT_PAGE_SIZE,
+      let nextPage = false;
+      let pageControl = new ldapts.PagedResultsControl({
+        value: {
+          size: pageSize,
         },
       });
 
-      return res.searchEntries as unknown as T[];
+      do {
+        const res = await this.client.search(
+          this.config.baseDN,
+          {
+            filter,
+            derefAliases: 'always',
+          },
+          [pageControl],
+        );
+
+        for (const entry of res.searchEntries) {
+          await iteratee(entry as T);
+        }
+
+        const pageResults = nextPageResults(res);
+        nextPage = pageResults.nextPage;
+
+        if (pageResults.nextPage) {
+          pageControl = new ldapts.PagedResultsControl({
+            value: {
+              size: pageSize,
+              cookie: pageResults.cookie,
+            },
+          });
+        }
+      } while (nextPage);
     } catch (err) {
       if (err instanceof ldapts.SizeLimitExceededError) {
         this.config.logger.error(
@@ -102,28 +152,6 @@ export class LdapTSAdapter implements LdapClient {
     } finally {
       await this.client.unbind();
     }
-  }
-}
-
-export class LdapTestAdapter implements LdapClient {
-  async search<T>(filter: string): Promise<T[]> {
-    if (filter === '(&(objectClass=user)(objectCategory=person))') {
-      return Promise.resolve(require('./steps/access/__testdata__/users.json'));
-    } else if (filter === 'objectClass=Group') {
-      return Promise.resolve(
-        require('./steps/access/__testdata__/groups.json'),
-      );
-    } else if (filter === 'objectClass=Computer') {
-      return Promise.resolve(
-        require('./steps/access/__testdata__/computers.json'),
-      );
-    }
-
-    return Promise.resolve([]);
-  }
-
-  async verifyAuthentication(): Promise<void> {
-    // Do nothing
   }
 }
 

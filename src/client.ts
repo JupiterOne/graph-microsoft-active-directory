@@ -1,6 +1,6 @@
 import { IntegrationLogger } from '@jupiterone/integration-sdk-core';
 import { IntegrationConfig } from './config';
-import { LdapClient, LdapTestAdapter, LdapTSAdapter } from './ldap';
+import { LdapClient, LdapTSAdapter } from './ldap';
 import {
   ActiveDirectoryUser,
   ActiveDirectoryGroup,
@@ -32,13 +32,10 @@ export class APIClient {
   public async iterateUsers(
     iteratee: ResourceIteratee<ActiveDirectoryUser>,
   ): Promise<void> {
-    const users: ActiveDirectoryUser[] = await this.client.search(
+    await this.client.search(
       '(&(objectClass=user)(objectCategory=person))',
+      iteratee,
     );
-
-    for (const user of users) {
-      await iteratee(user);
-    }
   }
 
   /**
@@ -49,12 +46,7 @@ export class APIClient {
   public async iterateGroups(
     iteratee: ResourceIteratee<ActiveDirectoryGroup>,
   ): Promise<void> {
-    const groups: ActiveDirectoryGroup[] =
-      await this.client.search('objectClass=Group');
-
-    for (const group of groups) {
-      await iteratee(group);
-    }
+    await this.client.search('objectClass=Group', iteratee);
   }
 
   /**
@@ -65,13 +57,7 @@ export class APIClient {
   public async iterateDevices(
     iteratee: ResourceIteratee<ActiveDirectoryComputer>,
   ): Promise<void> {
-    const devices: ActiveDirectoryComputer[] = await this.client.search(
-      'objectClass=Computer',
-    );
-
-    for (const device of devices) {
-      await iteratee(device);
-    }
+    await this.client.search('objectClass=Computer', iteratee);
   }
 }
 
@@ -79,10 +65,6 @@ export function createAPIClient(
   config: IntegrationConfig,
   logger: IntegrationLogger,
 ): APIClient {
-  if (process.env.NODE_ENV === 'test') {
-    return new APIClient(new LdapTestAdapter());
-  }
-
   return new APIClient(
     new LdapTSAdapter({
       baseDN: config.baseDN,
